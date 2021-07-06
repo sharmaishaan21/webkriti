@@ -12,11 +12,11 @@ app.use(
 app.get('/',(req,res)=>{
     res.json({info:'Node.js, express and postgres api'});
 })
-app.get('/users',db.getusers);
-app.get('/users/:id',db.getuserbyid);
-app.post('/users',db.createuser);
-app.put('/users/:id',db.updateuser);
-app.delete('/users/:id',db.deleteuser);
+app.get('/users',db.getUsers);
+app.get('/users/:id',db.getUserById);
+app.post('/users',db.createUser);
+app.put('/users/:id',db.updateUser);
+app.delete('/users/:id',db.deleteUser);
 app.listen(port,()=>{
     console.log(`The website is running at port number ${port}`);
 })
