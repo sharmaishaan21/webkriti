@@ -1,5 +1,6 @@
 const express=require('express');
-const bodyParser=require('body-parser');
+const Path=require('path');
+const cors=require('cors');
 const bcrypt= require('bcrypt');
 const session=require('express-session');
 const flash=require('express-flash');
@@ -11,7 +12,9 @@ require("dotenv").config();
 const app=express();
 //const db=require('./queries');
 const port=process.env.port || 3000;
-app.set("view engine","ejs");
+//app.set("view engine","ejs");
+app.use(express.json());
+app.use(cors());
 app.use(
     express.urlencoded({
         extended: false,
@@ -27,36 +30,34 @@ app.use(
     app.use(passport.session());
 app.use(flash());
 app.get('/',(req,res)=>{
-    res.render('index');
+    res.sendFile(Path.join(__dirname,"./source/landing_page/landing.html"));
 })
 app.get('/users/register',(req,res)=>{
-    res.render('register');
+    res.sendFile(Path.join(__dirname,"./source/login_page/login.html"));
+ })
+app.get('/users/profile',(req,res)=>{
+    res.sendFile(Path.join(__dirname,"./source/profile_page/profile.html"));
 })
-app.get('/users/login',(req,res)=>{
-    res.render('login');
-})
-app.get('/users/dashboard',(req,res)=>{
-    res.render('dashboard',{ user: req.user.name});
-})
+// app.get('/users/dashboard',(req,res)=>{
+//     res.render('dashboard',{ user: req.user.name});
+// })
 app.post('/users/register',async (req,res)=>{
-    let { name, username, password, email, bio, picture}=req.body;
+    let { name, username, password, email}=req.body;
     let errors=[];
     console.log({
         name,
         username,
         password,
-        email,
-        bio,
-        picture
+        email
     });
     
-    if(!name || !username || !password || !email || !bio || !picture)
+    if(!name || !username || !password || !email)
     {
         errors.push({ message: " Please enter all the fields"});
     }
     if ( errors.length>0)
     {
-        res.render("register",{errors});
+        res.status(400).send(`${errors}`);
     }
     else
     {
@@ -71,18 +72,19 @@ app.post('/users/register',async (req,res)=>{
             if (results.rows.length > 0)
             {
                 errors.push({message: "Email already registered"});
-                res.render("register",{errors});
+                res.status(401).send("User already exists");
             }
             else
             {
-                pool.query(`INSERT INTO users (name, username, password, email, bio, picture) VALUES ($1,$2,$3,$4,$5,$6)`,[name,username,password,email,bio,picture],(err,results)=>{
+                pool.query(`INSERT INTO users (name, username, password, email) VALUES ($1,$2,$3,$4)`,[name,username,password,email],(err,results)=>{
                     if (err)
                     {
                         throw err;
                     }
                     console.log(results.rows);
                     req.flash("success_message","You are now registered. Please log-in.");
-                    res.redirect('/users/login');
+                    //res.redirect('/users/login');
+                    res.status(200).send(`User registered`);
                 })
             }
         })
@@ -93,11 +95,11 @@ app.post('/users/register',async (req,res)=>{
 // app.post('/users',db.createUser);
 // app.put('/users/:id',db.updateUser);
 // app.delete('/users/:id',db.deleteUser);
-app.post('/users/login',passport.authenticate("local",{
-    successRedirect: "/users/dashboard",
-    failureRedirect: "/users/login",
-    failureFlash: true
-}))
+// app.post('/users/login',passport.authenticate("local",{
+//     successRedirect: "/users/dashboard",
+//     failureRedirect: "/users/login",
+//     failureFlash: true
+// }))
 app.listen(port,()=>{
     console.log(`The website is running at port number ${port}`);
 })

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+</head>
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        margin: 0px;
+        background: rgb(4, 34, 68);
+
+    }
+    main{
+        width: 100%;
+        height: 80%;
+        position:absolute;
+        overflow: hidden;
+    }
+    #box1{
+        width:780px;
+        height: 700px;
+        background-image:url() ;
+        position: absolute;
+        bottom: -100%;
+        left: 30%;
+        animation: anim 2s forwards,anim2 4s forwards 3s;
+
+    }
+    #box1:after{
+        content: '';
+        position: absolute;
+
+        width:530px;
+        height:400px;
+        background-image:url(delivery-report-for-text-messages-removebg-preview.jpg) ;
+        left:0px;
+        z-index: -1;
+
+    }
+    @keyframes anim{
+        from{
+            bottom:-100%;
+
+        }
+        to{
+            bottom:-10%;
+
+        }
+    }
+    @keyframes anim2{
+        from{
+            left:20%;
+            width:530px;
+        }
+        to{
+            width:0px;
+            left:50%;
+        }
+        }
+        #box2{
+            width:auto;
+            height:auto;
+            font-family:'bahnschrift Condensed';
+            color: white;
+            font-size: 10em;
+            font-weight: 500;
+            line-height: 130px;
+            position: absolute;
+            top:250px;
+            left: 100px;
+            overflow: hidden;
+
+
+        }
+        p{  margin-left: 15px ;
+            font-size: 2rem;
+        }
+        #text{
+            position: relative;
+            left: -100%;
+            animation: anim3 2s forwards 3s;
+        }
+
+        @keyframes anim3{
+            from{
+                left: -100%;
+            }
+            to{
+                left:0%;
+            }
+        }
+        #box3{
+            overflow:hidden;
+
+        }
+        #container{
+            width: 100%;
+            position:absolute;
+            top: -100%;
+            animation:anim4 2s forwards 2.7s;
+
+}
+#logo{
+    float: left;
+    margin-left:100px;
+    margin-top: 20px;
+    display: fixed;
+
+}
+#logo img{
+    width: 100px;
+
+}
+
+#menu{
+    font-family: 'bahnschrift Condensed';
+    font-size: 12px;
+    color: white;
+    letter-spacing: 2px;
+    margin-right: 150px;
+    margin-top: 40px;
+    float: right;
+
+}
+#menu ul{
+    list-style: none;
+
+}
+#menu ul li{
+    display: inline-block;
+    margin-left: 100px;
+
+}
+#menu ul li a{
+    color:white
+}
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 50px;
+    margin: 0 5px;
+}
+
+a.active,a:hover{
+
+    transition: 0.3s;
+}
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+    margin-top: 80px;
+    margin-left: 80px;
+}
+#check{
+    display: none;
+}
+@media (max-width:1150px) {
+        .checkbtn{
+            display: block;
+            margin-top: 5px;
+            margin-right: 10px;
+        }
+        ul{
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 80px;
+            left: -100%;
+            text-align: center;
+
+        }
+       nav ul li{
+            display: block;
+            margin: 50px 0;
+            line-height: 30px;
+        }
+        nav ul li a{
+            font-size: 25px;
+        }
+        a:hover, a.active{
+            background: none;
+            color: blue;
+        }
+#check:checked ~ ul{
+    left: 0;
+}
+}
+@keyframes anim4{
+    from{
+        top:-100%;
+    }
+    to{
+        top:0%;
+    }
+}
+#feature{
+    display: flex;
+
+    font-size:3rem ;
+    color: white;
+    font-family:'bahnschrift Condensed' ;
+
+    margin-top: 750px ;
+    margin-left: 550px;
+    position: relative;
+    left: -100%;
+    animation: anim3 2s forwards 3s;
+}
+.feature1{
+    color: white;
+    font-size: 1rem;
+    margin-left: 50px;
+    position: relative;
+    left: -100%;
+    animation: anim3 2s forwards 3s;
+
+
+}
+#p1{
+    margin-left: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+#image1{
+    width:250px;
+    height:200px;
+}
+
+h2{
+    font-family:'bahnschrift Condensed' ;
+    font-size: 3rem;
+    margin-left: 50px;
+
+}
+
+
+
+</style>
+<body>
+    <div id="main">
+        <div id="box1">
+        </div>
+        <div id="box2">
+            <div id="text">PIGEON
+                <p>  
+                      MAKE YOUR FRIENDS EVERYWHERE</p>
+            </div>
+        </div>
+        <div id="box3">
+            <div id="container">
+                <div id="logo"><img src="nfinal logo.jpg"  ></div>
+                <div id="menu">
+                    <nav>
+                    <input type="checkbox" id="check" >
+                    <label for="check" class="checkbtn">
+                        <i class="fas fa-bars"></i> </label>
+                    <ul>
+                        <li><a class="active"href="login.html">SIGNIN/SIGNUP</a></li>
+                        <li><a href="#feature">FEATURES</a></li>
+                        <li><a href="#">ABOUT US</a></li>
+                        <li><a href="#">CONTACT US</a></li>
+                    </ul>
+                </nav>
+                </div>
+
+            </div>
+        </div>
+        <div id="feature"><h1>FEATURES</h1></div>
+        <div class="feature1">
+            <h2>send your thoughts</h2>
+            <p id="p1">you can share your thoughts with world with us </p>
+            <img src="sharing-ideas chan_23-2147501744_prev_ui" id="image1">
+        </div>
+        <div class="feature2">
+           <h2>make relations</h2>
+           <p>you can make strong relations around the world with us</p>
+        </div>
+        <div class="feature3">
+            <h2>fun place</h2>
+            <p>you can fun with your friends by sharing media and movies name </p>
+        </div>
+    </div>
+
+
+
+</body>
+</html> 
