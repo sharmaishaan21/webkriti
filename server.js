@@ -84,7 +84,7 @@ app.post('/users/register',async (req,res)=>{
                     console.log(results.rows);
                     req.flash("success_message","You are now registered. Please log-in.");
                     //res.redirect('/users/login');
-                    res.status(200).send(`User registered`);
+                    res.status(200);
                 })
             }
         })
