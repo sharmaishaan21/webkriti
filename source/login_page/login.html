@@ -369,7 +369,7 @@
                             </div>
                         </div>
                         <div class="forms_buttons">
-                            <input type="submit" value="Sign up" class="forms_buttons-action" id="form">
+                            <button value="Sign up" class="forms_buttons-action" id="form">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -385,7 +385,8 @@
         const register_btn = document.getElementById('btn_signup'),
             signin_btn = document.getElementById('btn_login'),
             mainFormFields = document.getElementById('select_form_option'),
-            form_btn=document.getElementById('form');
+            form_btn=document.getElementById('form'),
+            form_class_btn=document.querySelector('forms_buttons-action');
 
 
         register_btn.addEventListener('click', () => {
@@ -411,14 +412,12 @@
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, username, password, email }),
-      }).then((res)=>res.json()).then((data)=>console.log(data)).catch((err)=>console.log(err));
+      }).then((res)=>res.json()).then((data)=>console.log(data)).then(()=>window.location.href="9anime.to").catch((err)=>console.log(err));
+     // navigateToURL(new URLRequest("http://localhost/users/profile"), "_blank");
+     //window.location.href="/webkriti/source/profile_page/profile.html";
         })
-        form_btn.addEventListener("click",()=>{
-            window.location.href="http://localhost:3000/users/profile";
-        });
+        
     </script>
-
-
 </body>
 
 </html>
