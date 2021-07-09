@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pigeon Chat</title>
+</head>
+<style>
+    .logo
+    {
+        display: block;
+        margin: auto;
+        width: 50px;
+        height: 50px;
+    }
+    .container
+    {
+        max-width: 955px;
+        border: 2px solid black;
+        margin: auto;
+        height: 60vh;
+        padding: 33px;
+        overflow-y: auto;
+        margin-bottom: 23px;
+    }
+    .message
+    {
+        background-color: grey;
+        width: 24%;
+        padding: 10px;
+        margin: 17px 12px;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+    .left
+    {
+        float: left;
+        clear: both;
+    }
+    .right
+    {
+        float: right;
+        clear: both;
+    }
+    #send-container
+    {
+        margin: auto;
+        text-align: center;
+        display: block;
+        max-width: 985px;
+        width: 100%;
+    }
+    #messageImp
+    {
+        width: 92%;
+        border: 2px solid black;
+        border-radius: 6px;
+        height: 34px;
+    }
+    .btn
+    {
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 6px;
+        height: 34px;
+    }
+    body
+    {
+        height: 100vh;
+        background-image: linear-gradient(rgb(255,255,255),purple)l;
+    }
+</style>
+<body>
+    <nav>
+        <img src="chat.png" class="logo">
+    </nav>
+    <div class="container">
+        <div class="message-right">Hi! How are you?</div>
+        <div class="message-left">Hello! I am fine.</div>
+    </div>
+    <div class="send">
+        <form action="#" id="send-container">
+            <input type="text" name="messageImp" id="messageImp">
+            <button class="btn" type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
